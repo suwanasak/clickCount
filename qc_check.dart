@@ -95,34 +95,7 @@ class _QcCheckState extends State<QcCheck> {
           },
         ),
       ),
-      drawer: Drawer(
-        child: Stack(
-          children: [
-            ShowSignOut(),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                UserAccountsDrawerHeader(
-                  accountName:
-                      Text('Quality', style: MyConstant().TitleExit1()),
-                  accountEmail: Text('คิวซีตรวจสอบมัดงาน',
-                      style: MyConstant().TitleExit2()),
-                  currentAccountPicture: CircleAvatar(
-                    child: FlutterLogo(
-                      size: 42.0,
-                    ),
-                    backgroundColor: Colors.white,
-                  ),
-                ),
-                menuListLoad1(),
-                menuListLoad2(),
-                menuListLoad3(),
-              ],
-            ),
-          ],
-        ),
-      ),
+     
       body: GestureDetector(
         onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
         behavior: HitTestBehavior.opaque,
@@ -313,66 +286,6 @@ class _QcCheckState extends State<QcCheck> {
             .showSnackBar(SnackBar(content: Text("ไม่สามารถบันทึกได้")));
       }
     }
-  }
-
-  ListTile menuListLoad1() {
-    return ListTile(
-      onTap: () {
-        setState(() {
-          Navigator.pushNamedAndRemoveUntil(
-              context, MyConstant.routeQcCheck, (route) => false);
-        });
-      },
-      leading: Icon(Icons.filter_1),
-      title: ShowTitle(
-        title: 'Check the bundle',
-        textStyle: MyConstant().h5Style(),
-      ),
-      subtitle: ShowTitle(
-        title: 'ตรวจสอบมัดงาน',
-        textStyle: MyConstant().h6Style(),
-      ),
-    );
-  }
-
-  ListTile menuListLoad2() {
-    return ListTile(
-      onTap: () {
-        setState(() {
-          Navigator.pushNamedAndRemoveUntil(
-              context, MyConstant.routeQcSearch, (route) => false);
-        });
-      },
-      leading: Icon(Icons.filter_2),
-      title: ShowTitle(
-        title: 'Recive Bind',
-        textStyle: MyConstant().h5Style(),
-      ),
-      subtitle: ShowTitle(
-        title: 'มัดงานที่รับวันนี้',
-        textStyle: MyConstant().h6Style(),
-      ),
-    );
-  }
-
-  ListTile menuListLoad3() {
-    return ListTile(
-      onTap: () {
-        setState(() {
-          Navigator.pushNamedAndRemoveUntil(
-              context, MyConstant.routeQcSelectStyle, (route) => false);
-        });
-      },
-      leading: Icon(Icons.filter_3),
-      title: ShowTitle(
-        title: 'Selcet Style',
-        textStyle: MyConstant().h5Style(),
-      ),
-      subtitle: ShowTitle(
-        title: 'เลือกสไตส์ที่ตรวจสอบ',
-        textStyle: MyConstant().h6Style(),
-      ),
-    );
   }
 
   readData() async {
