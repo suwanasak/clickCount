@@ -22,17 +22,7 @@ class QcCheck extends StatefulWidget {
 }
 
 class _QcCheckState extends State<QcCheck> {
-  String? fix,
-      amount,
-      qty,
-      readUsername,
-      readName,
-      readStyle,
-      readCode,
-      readUserID,
-      readGroup,
-      readLevel,
-      scanresult;
+  String? fix,amount,qty,readUsername,readName,readStyle,readCode,readGroup,scanresult;
   bool checkBar = false;
   bool checkPic = true;
   List<QCCheckFixModel> fixModels = [];
@@ -286,7 +276,7 @@ class _QcCheckState extends State<QcCheck> {
   clickFix() async {
     readData();
     print(
-        'style=$readStyle, code=$readCode, group=$readGroup, qty=1, isAdd=true, txtUser=$readUsername, txtName=$readName');
+        'style=$readStyle, code=$readCode, group=$readGroup, qty=1, isCheck=true, txtUser=$readUsername, txtName=$readName');
     if (readStyle.toString().isNotEmpty && readCode.toString().isNotEmpty) {
       var response = await http.post(
           Uri.parse("${MyConstant.check_url}/qc_insert_fix.php"),
@@ -389,31 +379,11 @@ class _QcCheckState extends State<QcCheck> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       // set state  เพื่อให้มีการ refresh เมื่อมีการเก็บค่าลงตัวแปร
-      readUserID = prefs.getString('EmID');
       readUsername = prefs.getString('Emuser');
       readName = prefs.getString('Emname');
       readGroup = prefs.getString('Emgroup');
-      readLevel = prefs.getString('Emlevel');
       readStyle = prefs.getString('Style');
       readCode = prefs.getString('Code');
     });
   }
-
-  // Widget showDataFromSharedPreferences() {
-  //   readData();
-  //   return Container(
-  //     child: Column(
-  //       crossAxisAlignment: CrossAxisAlignment.start,
-  //       children: <Widget>[
-  //         Text(readUsername ?? ''),
-  //         Text(readName ?? ''),
-  //         Text(readUserID ?? ''),
-  //         Text(readGroup ?? ''),
-  //         Text(readLevel ?? ''),
-  //         Text(readStyle ?? ''),
-  //         Text(readCode ?? ''),
-  //       ],
-  //     ),
-  //   );
-  // }
 }
