@@ -30,7 +30,7 @@ if (isset($_POST)){
 		
 		$check_balance = ($check_amount - $check_fix);
 		
-		$output[] = array("fix" => $check_fix,"amount" => $check_amount,"qty" => $check_balance, 'ertete' => $check_code);	
+		$output[] = array("fix" => $check_fix,"amount" => $check_amount,"qty" => $check_balance, 'code' => $check_code);	
 		
 		echo json_encode($output);	
 	}
